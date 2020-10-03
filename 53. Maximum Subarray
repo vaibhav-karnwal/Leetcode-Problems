@@ -1,0 +1,31 @@
+class Solution
+{
+    public int maxSubArray(int[] nums)
+    {
+    int x,max_end=0,max_so_far=-1,temp;
+    int arr[]=new int[nums.length];
+    temp=arr[0];
+    for(x=0;x<nums.length;x++)
+    {
+        arr[x]=nums[x];
+        if(temp>arr[x])
+		{
+			temp=arr[x];
+		}
+    }
+        max_so_far=temp;
+	for(x=0;x<arr.length;x++)
+	{
+		max_end+=arr[x];
+		if(max_so_far<max_end)
+		{
+			max_so_far=max_end;
+		}
+		if(max_end<0)
+		{
+		max_end=0;
+		}
+	}
+	return max_so_far;
+	}
+}
