@@ -1,3 +1,5 @@
+Method 1//////////////////////////////////////////////////////////////////////
+
 class Solution {
     public void nextPermutation(int[] nums) {
         int i = nums.length - 2;
@@ -31,4 +33,40 @@ class Solution {
         }
     }
             
+}
+
+Method 2 ////////////////////////////////////////////////////////////////////////////////////
+
+class Solution {
+    public void nextPermutation(int[] nums) {
+        int k=nums.length-2;
+        
+        while(k>=0 && nums[k]>=nums[k+1]){
+            k--;
+        }
+        
+        if(k==-1){
+            reverseArray(0,nums.length-1,nums);
+            return;
+        }
+        for(int i=nums.length-1;i>k;i--){
+            if(nums[i]>nums[k]){
+                int temp=nums[i];
+                nums[i]=nums[k];
+                nums[k]=temp;
+                break;
+            }
+        }
+        reverseArray(k+1,nums.length-1,nums);
+    }
+        void reverseArray(int i,int j, int[] nums){
+            while(i<j){
+                int temp=nums[i];
+                nums[i]=nums[j];
+                nums[j]=temp;
+                i++;
+                j--;
+            }
+        }
+    
 }
